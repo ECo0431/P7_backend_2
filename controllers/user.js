@@ -73,6 +73,7 @@ exports.registerUsers = async (req, res) => {
 
   try {
     let hash = await bcrypt.hash(pass, await bcrypt.genSalt(10));
+
     mysqlConnection.query(
       sql,
       [users.pseudo, users.email, hash],

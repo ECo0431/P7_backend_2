@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const postsCtrl = require("../controllers/posts");
 const auth = require("../middlewares/auth");
-const multer = require("../middleware/multer-config");
+const multer = require("../middlewares/multer-config");
 
 router.get("/posts", postsCtrl.selectAllPosts);
 router.get("/posts/:id_posts", postsCtrl.selectOnePost);
-router.post("/users/:id_users/posts", postsCtrl.insertOnePost);
+router.post("/users/:id_users/posts", multer, postsCtrl.insertOnePost);
 router.put("/users/:id_users/posts/:id_posts", postsCtrl.modifyOnePost);
 router.delete("/users/:id_users/posts/:id_posts", postsCtrl.deleteOnePost);
 
