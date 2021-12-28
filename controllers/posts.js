@@ -1,4 +1,6 @@
+const e = require("express");
 const mysqlConnection = require("../db/db");
+const { post } = require("../routes/user");
 
 exports.selectAllPosts = (req, res) => {
   mysqlConnection.query("SELECT * FROM Posts", (err, rows, fields) => {
@@ -27,9 +29,15 @@ exports.selectOnePost = (req, res) => {
 };
 
 exports.insertOnePost = (req, res) => {
+  console.log("hello");
   let id_users = req.params.id_users;
   let posts = req.body;
   let sql = `INSERT INTO Posts (id_users, img, title, description) VALUES(${id_users}, ?, ?, ?)`;
+
+  posts.img = `${req.protocol}://${req.get("host")}/images/${
+    req.file.filename
+  }`;
+  console.log(posts.img);
   mysqlConnection.query(
     sql,
     [posts.img, posts.title, posts.description],

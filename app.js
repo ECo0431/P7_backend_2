@@ -3,6 +3,7 @@ const app = express();
 const usersRoutes = require("./routes/user");
 const postsRoutes = require("./routes/posts");
 const remarksRoutes = require("./routes/remarks");
+const path = require("path");
 
 // app.use((req, res, next) => {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -37,3 +38,5 @@ app.listen("3000", () => {
 });
 
 app.use("/api", usersRoutes, postsRoutes, remarksRoutes);
+
+app.use("/images", express.static(path.join(__dirname, "images")));
