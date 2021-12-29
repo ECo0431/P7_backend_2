@@ -3,9 +3,17 @@ const router = express.Router();
 const remarksCtrl = require("../controllers/remarks");
 const auth = require("../middlewares/auth");
 
-router.get("/all/remarks", remarksCtrl.selectAllRemarks);
-router.get("/posts/:id_posts/remarks", remarksCtrl.selectAllRemarksOnOnePost);
-router.get("/posts/:id_posts/remarks/:id_remarks", remarksCtrl.selectOneRemark);
+router.get("/all/remarks", auth, remarksCtrl.selectAllRemarks);
+router.get(
+  "/posts/:id_posts/remarks",
+  auth,
+  remarksCtrl.selectAllRemarksOnOnePost
+);
+router.get(
+  "/posts/:id_posts/remarks/:id_remarks",
+  auth,
+  remarksCtrl.selectOneRemark
+);
 router.post(
   "/users/:id_users/posts/:id_posts/remarks",
   auth,
