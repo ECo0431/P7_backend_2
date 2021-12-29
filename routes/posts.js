@@ -9,7 +9,7 @@ router.get("/posts/:id_posts", auth, postsCtrl.selectOnePost);
 router.post("/users/:id_users/posts", auth, multer, postsCtrl.insertOnePost);
 router.put(
   "/users/:id_users/posts/:id_posts",
-  auth,
+
   multer,
   postsCtrl.modifyOnePost
 );

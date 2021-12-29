@@ -4,6 +4,7 @@ const usersRoutes = require("./routes/user");
 const postsRoutes = require("./routes/posts");
 const remarksRoutes = require("./routes/remarks");
 const path = require("path");
+require("dotenv").config({ path: ".env" });
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -39,8 +40,8 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.listen("3000", () => {
-  console.log("Server started on port 3000");
+app.listen(`${process.env.PORTSERVER}`, () => {
+  console.log(`Server started on port ${process.env.PORTSERVER}`);
 });
 
 app.use("/api", usersRoutes, postsRoutes, remarksRoutes);
