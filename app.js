@@ -6,11 +6,17 @@ const remarksRoutes = require("./routes/remarks");
 const path = require("path");
 
 // app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader("Access-Control-Allow-Credentials", "true");
-//     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-//     next();
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+//   );
+//   next();
 // });
 
 app.use((req, res, next) => {
@@ -24,7 +30,7 @@ app.use((req, res, next) => {
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
-  //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+  // res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8020");
   res.header("Access-Control-Allow-Methods", "GET, OPTIONS, PUT, DELETE, POST");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", true);

@@ -8,14 +8,17 @@ router.get("/posts/:id_posts/remarks", remarksCtrl.selectAllRemarksOnOnePost);
 router.get("/posts/:id_posts/remarks/:id_remarks", remarksCtrl.selectOneRemark);
 router.post(
   "/users/:id_users/posts/:id_posts/remarks",
+  auth,
   remarksCtrl.insertOneRemark
 );
 router.put(
   "/users/:id_users/posts/:id_posts/remarks/:id_remarks",
+  auth,
   remarksCtrl.modifyOneRemark
 );
 router.delete(
   "/users/:id_users/posts/:id_posts/remarks/:id_remarks",
+  auth,
   remarksCtrl.deleteOneRemark
 );
 

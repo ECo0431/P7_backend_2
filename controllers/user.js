@@ -53,6 +53,7 @@ exports.loginUser = async (req, res) => {
             };
             //Affiche le status 201 et le token dans postman
             res.status(201).json(result);
+            console.log(result);
           });
           // .catch(error => res.status(500).json({ error }));
         } else {

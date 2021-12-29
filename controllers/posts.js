@@ -29,7 +29,6 @@ exports.selectOnePost = (req, res) => {
 };
 
 exports.insertOnePost = (req, res) => {
-  console.log("hello");
   let id_users = req.params.id_users;
   let posts = req.body;
   let sql = `INSERT INTO Posts (id_users, img, title, description) VALUES(${id_users}, ?, ?, ?)`;
@@ -58,6 +57,11 @@ exports.modifyOnePost = (req, res) => {
   let id_posts = req.params.id_posts;
   let posts = req.body;
   let sql = `UPDATE Posts SET img = ?, title = ?, description = ? WHERE id_posts = ${id_posts}`;
+
+  posts.img = `${req.protocol}://${req.get("host")}/images/${
+    req.file.filename
+  }`;
+
   mysqlConnection.query(
     sql,
     [posts.img, posts.title, posts.description],
